@@ -1,6 +1,7 @@
 require 'net/http'
 require 'rexml/document'
 require 'bing_translator'
+require 'htmlentities'
 
 desc "Translate your YAML files using Bing."
 task :translate_acts_as_translatable_models => :environment do
@@ -14,11 +15,14 @@ task :translate_acts_as_translatable_models => :environment do
   raise "need to specify to=<locale>" unless @to_locale
   
   @force_translation = (ENV["force_translation"] == "true")
+  @strip_html = (ENV["strip_html"] == "true")
   
   @app_id = ENV["app_id"]
   raise "need to specify app_id=<Your Bing API key>" unless @app_id
   
   puts "Translating..."
+
+  coder = HTMLEntities.new
   
   @class.split(",").each do |c|
     model = c.constantize
@@ -28,6 +32,7 @@ task :translate_acts_as_translatable_models => :environment do
       model_translated = false
       model.translatable_fields.each do |field|
         source = record.send("#{field}_#{@from_locale}")
+        source = corder.decode(source) if !source.blank? && @strip_html
         dest = record.send("#{field}_#{@to_locale}")
         
         # only translate if not already translated

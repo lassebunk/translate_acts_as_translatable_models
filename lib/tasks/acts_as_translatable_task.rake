@@ -57,7 +57,13 @@ def translate_string(source)
   return "" unless source
   
   # translate using Microsoft Bing
-  translator.translate(source, :from => @from_locale, :to => @to_locale)
+  begin
+    dest = translator.translate(source, :from => @from_locale, :to => @to_locale)
+  rescue
+    dest = ""
+  end
+  
+  dest
 end
 
 def translator

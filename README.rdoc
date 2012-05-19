@@ -1,4 +1,4 @@
-translate_acts_as_translatable_models is a Ruby on Rails plugin for easy translation of your acts_as_translatable[link:/lassebunk/acts_as_translatable] enabled models.
+translate_acts_as_translatable_models is a Ruby on Rails plugin for easy translation of your acts_as_translatable (link:/lassebunk/acts_as_translatable) enabled models.
 
 == Installation
 

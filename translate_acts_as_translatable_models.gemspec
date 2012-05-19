@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.description = "Ruby on Rails plugin for easy translation of your acts_as_translatable models."
   s.summary = "Ruby on Rails plugin for easy translation of your acts_as_translatable models."
   s.homepage = "http://github.com/lassebunk/translate_acts_as_translatable_models"
+  s.add_dependency "bing_translator", "~> 0.0.2"
   s.files = Dir['lib/**/*.rb']
   s.require_paths = ["lib"]
 end

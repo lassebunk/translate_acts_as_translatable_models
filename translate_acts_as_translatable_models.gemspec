@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "translate_acts_as_translatable_models"
-  s.version = "0.0.6"
+  s.version = "0.0.7"
 
   s.author = "Lasse Bunk"
   s.email = "lassebunk@gmail.com"

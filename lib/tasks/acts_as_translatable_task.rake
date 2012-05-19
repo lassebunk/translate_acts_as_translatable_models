@@ -1,7 +1,6 @@
 require 'net/http'
 require 'rexml/document'
 require 'bing_translator'
-require 'htmlentities'
 
 desc "Translate your YAML files using Bing."
 task :translate_acts_as_translatable_models => :environment do
@@ -21,8 +20,6 @@ task :translate_acts_as_translatable_models => :environment do
   
   puts "Translating..."
 
-  coder = HTMLEntities.new
-  
   @class.split(",").each do |c|
     model = c.constantize
     model.enable_locale_fallbacks = false
